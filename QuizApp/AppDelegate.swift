@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+//import Firebase
 
 
 @UIApplicationMain
@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     public func applicationDidFinishLaunching(_ application: UIApplication) {
-        FIRApp.configure()
+//        FIRApp.configure()
     }
 
 
