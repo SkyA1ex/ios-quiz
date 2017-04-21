@@ -16,6 +16,9 @@ class DataManager {
     private struct Path {
         static let testQuiz = "quiz_test"
         static let publicQuizzes = "public_quizzes"
+        static func answerQuiz(userId: String, quizId: Int) -> String {
+            return "users/\(userId)/answers/\(quizId)"
+        }
     }
 
     var firebase: FIRDatabaseReference!
@@ -78,9 +81,21 @@ class DataManager {
                 })
     }
 
-    func sendAnswer(quizId: Int, answerNumber: Int) {
-        // TODO: add callback as argument
-        // TODO: implement
+    func sendAnswer(quizId: Int, answerNumber: Int, with: ((_: Error?) -> ())?) {
+        guard let user = FIRAuth.auth()?.currentUser else {
+            print("user is not logged in")
+            with?(nil)
+            return
+        }
+
+        // set value ../users/{user_id}/answers/{quiz_id} to {answer}
+        firebase.child(Path.answerQuiz(userId: user.uid, quizId: quizId))
+                .setValue(answerNumber, withCompletionBlock: { (error, _) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                    with?(error)
+                })
     }
 
 

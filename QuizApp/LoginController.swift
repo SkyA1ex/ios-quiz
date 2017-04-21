@@ -68,7 +68,7 @@ class LoginController: UIViewController {
                         self.signUp(withEmail: withEmail, password: password)
                     default:
                         print("Create User Error: \(error)")
-                        self.showAlert(error.localizedDescription)
+                        Utils.showAlert(self, "Authentication error", error.localizedDescription)
                     }
                 }
                 return
@@ -85,7 +85,7 @@ class LoginController: UIViewController {
     func signUp(withEmail: String, password: String) {
         FIRAuth.auth()?.createUser(withEmail: textFieldEmail.text!, password: textFieldPassword.text!) { (user, error) in
             if let error = error {
-                self.showAlert(error.localizedDescription)
+                Utils.showAlert(self, "Authentication error", error.localizedDescription)
                 return
             }
 
@@ -105,12 +105,6 @@ class LoginController: UIViewController {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let mainController = storyBoard.instantiateViewController(withIdentifier: "mainController") as! MainController
         self.present(mainController, animated: true, completion: nil)
-    }
-
-    private func showAlert(_ message: String) {
-        let alert = UIAlertController(title: "Authentication error", message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
 
 

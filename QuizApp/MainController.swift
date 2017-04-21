@@ -38,9 +38,16 @@ class MainController: UIViewController {
     // clicks
 
     @IBAction func fetchQuizClicked(_ sender: UIButton) {
-        dataManager.fetchAllQuizzes(with: { (quizzes) in
-            self.quizQuestionLabel.text = quizzes[1].answer4
+//        dataManager.fetchAllQuizzes(with: { (quizzes) in
+//            self.quizQuestionLabel.text = quizzes[1].answer4
+//        })
+
+        dataManager.sendAnswer(quizId: 10, answerNumber: 2, with: { (error) in
+            if let error = error {
+                Utils.showAlert(self, "Error while sending an answer", error.localizedDescription)
+            }
         })
+
     }
 
 
