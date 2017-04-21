@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 
 class MainController: UIViewController {
@@ -18,9 +19,12 @@ class MainController: UIViewController {
     @IBOutlet weak var quizQuestionLabel: UILabel!
 
 
+    var dataManager: DataManager!
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        dataManager = DataManager()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -29,17 +33,25 @@ class MainController: UIViewController {
         checkUserSignedId()
     }
 
+
+
+    // clicks
+
+    @IBAction func fetchQuizClicked(_ sender: UIButton) {
+        dataManager.fetchAllQuizzes(with: { (quizzes) in
+            self.quizQuestionLabel.text = quizzes[1].answer4
+        })
+    }
+
+
+
+    // authorization
+
     func checkUserSignedId() {
         if FIRAuth.auth()?.currentUser == nil {
             // user is not signed in
             goToLoginController()
         }
-    }
-
-
-
-    @IBAction func fetchQuizClicked(_ sender: UIButton) {
-        // TODO:
     }
 
     @IBAction func logoutClicked(_ sender: UIButton) {
