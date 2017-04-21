@@ -29,7 +29,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="jackqack@google.com" placeholder="email" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="fvE-nQ-wKd" customClass="PaddingTextField" customModule="QuizApp" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="fvE-nQ-wKd" customClass="PaddingTextField" customModule="QuizApp" customModuleProvider="target">
                                 <rect key="frame" x="37" y="314" width="300" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
@@ -45,7 +45,7 @@
                                     <action selector="onEmailChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="bRr-h4-s9s"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" placeholder="password" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="s7H-bG-xuC" customClass="PaddingTextField" customModule="QuizApp" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="s7H-bG-xuC" customClass="PaddingTextField" customModule="QuizApp" customModuleProvider="target">
                                 <rect key="frame" x="37" y="359" width="300" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		29060141EDA4E4E1722D505C /* Pods_QuizApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE880833ACA7D55D4A23CC83 /* Pods_QuizApp.framework */; };
 		BD8170999963AEF6C2DDD4B3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD817EFD15E48AC05D93685A /* Info.plist */; };
-		BD81719F1AC5F7FBCD5416AB /* OldMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD817AFD1A07FE8B19EB741B /* OldMain.storyboard */; };
 		BD81725D9AFE2E0E6DA182D9 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD817B08A94B90754D58A593 /* MyTextField.swift */; };
 		BD81732E97B3905109DD2EF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81789620D5E5A42FA0C294 /* AppDelegate.swift */; };
 		BD8173C697D748F60C1CD913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD817A5E0441830444F19A45 /* Assets.xcassets */; };
@@ -24,13 +23,13 @@
 		D5A7502B1EA938C1006AB02B /* SFText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5A750251EA938C1006AB02B /* SFText-Regular.otf */; };
 		D5A7502C1EA938C1006AB02B /* SFText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5A750261EA938C1006AB02B /* SFText-Semibold.otf */; };
 		D5A750301EA9391A006AB02B /* white_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D5A7502F1EA9391A006AB02B /* white_icon.png */; };
+		D5A750321EAA09A1006AB02B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5A750311EAA09A1006AB02B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5ECF7BA3964E72C65A317B70 /* Pods-QuizApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuizApp/Pods-QuizApp.debug.xcconfig"; sourceTree = "<group>"; };
 		BD817069202D9F32BDFA5774 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BD81714003AEAFA7B77C9201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BD8174B33E14B6B8C0F75D39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OldMain.storyboard; sourceTree = "<group>"; };
 		BD81789620D5E5A42FA0C294 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD81795658D4BD8B41A89AA7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BD817A5E0441830444F19A45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,6 +44,7 @@
 		D5A750251EA938C1006AB02B /* SFText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFText-Regular.otf"; path = "Res/Fonts/SFText-Regular.otf"; sourceTree = "<group>"; };
 		D5A750261EA938C1006AB02B /* SFText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFText-Semibold.otf"; path = "Res/Fonts/SFText-Semibold.otf"; sourceTree = "<group>"; };
 		D5A7502F1EA9391A006AB02B /* white_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = white_icon.png; path = Res/Images/white_icon.png; sourceTree = "<group>"; };
+		D5A750311EAA09A1006AB02B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE880833ACA7D55D4A23CC83 /* Pods_QuizApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuizApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9A9C4AAC4D0D5A04E3E94BF /* Pods-QuizApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuizApp/Pods-QuizApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,10 +76,10 @@
 				BD817EFD15E48AC05D93685A /* Info.plist */,
 				BD817A5E0441830444F19A45 /* Assets.xcassets */,
 				BD81789620D5E5A42FA0C294 /* AppDelegate.swift */,
-				BD817AFD1A07FE8B19EB741B /* OldMain.storyboard */,
 				BD817069202D9F32BDFA5774 /* LoginController.swift */,
 				BD817EE35691CEA48F4A93DE /* Main.storyboard */,
 				BD817B08A94B90754D58A593 /* MyTextField.swift */,
+				D5A750311EAA09A1006AB02B /* GoogleService-Info.plist */,
 				BD817A709E8C674A01D31FDC /* Utils.swift */,
 			);
 			path = QuizApp;
@@ -201,10 +201,10 @@
 				BD8170999963AEF6C2DDD4B3 /* Info.plist in Resources */,
 				D5A750301EA9391A006AB02B /* white_icon.png in Resources */,
 				D5A750281EA938C1006AB02B /* SFText-Heavy.otf in Resources */,
+				D5A750321EAA09A1006AB02B /* GoogleService-Info.plist in Resources */,
 				D5A7502C1EA938C1006AB02B /* SFText-Semibold.otf in Resources */,
 				BD8173C697D748F60C1CD913 /* Assets.xcassets in Resources */,
 				D5A7502A1EA938C1006AB02B /* SFText-Medium.otf in Resources */,
-				BD81719F1AC5F7FBCD5416AB /* OldMain.storyboard in Resources */,
 				BD8174C8B9C721CDF6AF4B5A /* Main.storyboard in Resources */,
 				D5A750271EA938C1006AB02B /* SFText-Bold.otf in Resources */,
 				BD8173E7EF635D9492FA5EA1 /* Podfile in Resources */,
@@ -276,14 +276,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BD817AFD1A07FE8B19EB741B /* OldMain.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BD8174B33E14B6B8C0F75D39 /* Base */,
-			);
-			name = OldMain.storyboard;
-			sourceTree = "<group>";
-		};
 		BD817EE35691CEA48F4A93DE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
