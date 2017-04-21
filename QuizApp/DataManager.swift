@@ -93,6 +93,8 @@ class DataManager {
                 .setValue(answerNumber, withCompletionBlock: { (error, _) in
                     if let error = error {
                         print(error.localizedDescription)
+                    } else {
+                        // TODO: save quiz ID to list of answered
                     }
                     with?(error)
                 })
