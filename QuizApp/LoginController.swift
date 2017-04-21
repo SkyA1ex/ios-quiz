@@ -17,16 +17,16 @@ class LoginController: UIViewController {
     @IBOutlet weak var buttonSingUpLogin: UIButton!
 
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
     }
 
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
     }
+
 
 
     @IBAction func onEmailChanged(_ sender: UITextField) {
@@ -57,7 +57,7 @@ class LoginController: UIViewController {
 
 
     // TODO: move to AuthManager
-    // authentication
+    // authorization
 
     func singIn(withEmail: String, password: String) {
         FIRAuth.auth()?.signIn(withEmail: withEmail, password: password) { (user, error) in
@@ -98,10 +98,14 @@ class LoginController: UIViewController {
     }
 
     func onUserLoggedIn(_ user: FIRUser) {
-        // TODO: save user, token, etc
-        // TODO: open next screen!
+        goToMainController()
     }
 
+    func goToMainController() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainController = storyBoard.instantiateViewController(withIdentifier: "mainController") as! MainController
+        self.present(mainController, animated: true, completion: nil)
+    }
 
     private func showAlert(_ message: String) {
         let alert = UIAlertController(title: "Authentication error", message: message, preferredStyle: UIAlertControllerStyle.alert)

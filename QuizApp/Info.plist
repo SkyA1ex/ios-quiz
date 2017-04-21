@@ -45,8 +45,6 @@
 		<string>SFText-Regular.otf</string>
 		<string>SFText-Semibold.otf</string>
 	</array>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

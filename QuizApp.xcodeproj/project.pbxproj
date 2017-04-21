@@ -24,6 +24,7 @@
 		D5A7502C1EA938C1006AB02B /* SFText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5A750261EA938C1006AB02B /* SFText-Semibold.otf */; };
 		D5A750301EA9391A006AB02B /* white_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D5A7502F1EA9391A006AB02B /* white_icon.png */; };
 		D5A750321EAA09A1006AB02B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5A750311EAA09A1006AB02B /* GoogleService-Info.plist */; };
+		D5A750341EAA2714006AB02B /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A750331EAA2714006AB02B /* MainController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		D5A750261EA938C1006AB02B /* SFText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFText-Semibold.otf"; path = "Res/Fonts/SFText-Semibold.otf"; sourceTree = "<group>"; };
 		D5A7502F1EA9391A006AB02B /* white_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = white_icon.png; path = Res/Images/white_icon.png; sourceTree = "<group>"; };
 		D5A750311EAA09A1006AB02B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D5A750331EAA2714006AB02B /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		EE880833ACA7D55D4A23CC83 /* Pods_QuizApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuizApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9A9C4AAC4D0D5A04E3E94BF /* Pods-QuizApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuizApp/Pods-QuizApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +80,7 @@
 				BD81789620D5E5A42FA0C294 /* AppDelegate.swift */,
 				BD817069202D9F32BDFA5774 /* LoginController.swift */,
 				BD817EE35691CEA48F4A93DE /* Main.storyboard */,
+				D5A750331EAA2714006AB02B /* MainController.swift */,
 				BD817B08A94B90754D58A593 /* MyTextField.swift */,
 				D5A750311EAA09A1006AB02B /* GoogleService-Info.plist */,
 				BD817A709E8C674A01D31FDC /* Utils.swift */,
@@ -270,6 +273,7 @@
 				BD8175FC4C658FBFC39D9C60 /* LoginController.swift in Sources */,
 				BD81725D9AFE2E0E6DA182D9 /* MyTextField.swift in Sources */,
 				BD817704D24F193F97C7D01D /* Utils.swift in Sources */,
+				D5A750341EAA2714006AB02B /* MainController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
