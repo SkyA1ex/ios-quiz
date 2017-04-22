@@ -11,6 +11,7 @@
 		BD817087F3CF61122D07844C /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8172885B40AC159A6DBA3E /* Quiz.swift */; };
 		BD8170999963AEF6C2DDD4B3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD817EFD15E48AC05D93685A /* Info.plist */; };
 		BD81725D9AFE2E0E6DA182D9 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD817B08A94B90754D58A593 /* MyTextField.swift */; };
+		BD8172FA3FE6E9AF22E1A04F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD817EC16347FEF07E1F4AA8 /* Person.swift */; };
 		BD81732E97B3905109DD2EF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81789620D5E5A42FA0C294 /* AppDelegate.swift */; };
 		BD8173C697D748F60C1CD913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD817A5E0441830444F19A45 /* Assets.xcassets */; };
 		BD8173E7EF635D9492FA5EA1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = BD81795658D4BD8B41A89AA7 /* Podfile */; };
@@ -39,6 +40,7 @@
 		BD817A5E0441830444F19A45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD817A709E8C674A01D31FDC /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BD817B08A94B90754D58A593 /* MyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
+		BD817EC16347FEF07E1F4AA8 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		BD817EF3BC3217793B1C56BD /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD817EFD15E48AC05D93685A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		D5A750211EA938C1006AB02B /* SFText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFText-Bold.otf"; path = "Res/Fonts/SFText-Bold.otf"; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				BD817A709E8C674A01D31FDC /* Utils.swift */,
 				D5A750351EAA7954006AB02B /* DataManager.swift */,
 				BD8172885B40AC159A6DBA3E /* Quiz.swift */,
+				BD817EC16347FEF07E1F4AA8 /* Person.swift */,
 			);
 			path = QuizApp;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				BD817704D24F193F97C7D01D /* Utils.swift in Sources */,
 				D5A750341EAA2714006AB02B /* MainController.swift in Sources */,
 				BD817087F3CF61122D07844C /* Quiz.swift in Sources */,
+				BD8172FA3FE6E9AF22E1A04F /* Person.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

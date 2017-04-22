@@ -8,19 +8,22 @@ import Foundation
 
 class Quiz: NSObject, NSCoding {
 
-    var id: Int!
-    var question: String!
-    var answer1, answer2, answer3, answer4: String!
+    var id: Int = 0
+    var question: String = ""
+    var answer1: String = ""
+    var answer2: String = ""
+    var answer3: String = ""
+    var answer4: String = ""
 
 
-    required convenience init?(coder decoder: NSCoder) {
+    public required convenience init(coder decoder: NSCoder) {
         self.init()
         id = decoder.decodeInteger(forKey: "id")
-        question = decoder.decodeObject(forKey: "question") as? String
-        answer1 = decoder.decodeObject(forKey: "answer1") as? String
-        answer2 = decoder.decodeObject(forKey: "answer2") as? String
-        answer3 = decoder.decodeObject(forKey: "answer3") as? String
-        answer4 = decoder.decodeObject(forKey: "answer4") as? String
+        question = decoder.decodeObject(forKey: "question") as! String
+        answer1 = decoder.decodeObject(forKey: "answer1") as! String
+        answer2 = decoder.decodeObject(forKey: "answer2") as! String
+        answer3 = decoder.decodeObject(forKey: "answer3") as! String
+        answer4 = decoder.decodeObject(forKey: "answer4") as! String
     }
 
     public func encode(with coder: NSCoder) {

@@ -13,12 +13,20 @@ import FirebaseDatabase
 
 class DataManager {
 
-    private struct Path {
-        static let testQuiz = "quiz_test"
+    private struct Api {
         static let publicQuizzes = "public_quizzes"
         static func answerQuiz(userId: String, quizId: Int) -> String {
             return "users/\(userId)/answers/\(quizId)"
         }
+    }
+
+    private struct LocalPath {
+        private static func directoryPath() -> URL {
+            let manager = FileManager.default
+            return manager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        }
+        static let publicQuizzes = directoryPath().appendingPathComponent("public_quizzes").path
+        static let answers = directoryPath().appendingPathComponent("answers").path
     }
 
     var firebase: FIRDatabaseReference!
@@ -28,53 +36,16 @@ class DataManager {
     }
 
 
-    func fetchTestQuiz(with: ((_: Quiz) -> ())?) {
-        firebase.child(Path.testQuiz).observeSingleEvent(of: .value,
-                with: { (snap) in
-                    guard let value = snap.value as? NSDictionary else {
-                        print("fetchTestQuiz: data is nil")
-                        return
-                    }
-
-                    let quiz = Quiz.parseDictionary(data: value)
-
-                    if quiz != nil {
-                        // TODO: save to local database
-                        with?(quiz!)
-                    } else {
-                        print("fetchTestQuiz: quiz parsing error")
-                    }
-                },
-                withCancel: { (error) in
-                    print("fetchTestQuiz: " + error.localizedDescription)
-                })
-    }
-
     func fetchAllQuizzes(with: ((_: [Quiz]) -> ())?) {
-        firebase.child(Path.publicQuizzes).observeSingleEvent(of: .value,
+        firebase.child(Api.publicQuizzes).observeSingleEvent(of: .value,
                 with: { (snap) in
-                    var results = [Quiz]()
-                    guard let values = snap.value as? NSArray else {
-                        print("fetchAllQuizzes: data is nil")
-                        return
-                    }
-
-                    for value in values {
-                        guard let value = value as? NSDictionary else {
-                            print("fetchAllQuizzes: array item is nil")
-                            continue
-                        }
-                        let quiz = Quiz.parseDictionary(data: value)
-
-                        if quiz != nil {
-                            results.append(quiz!)
-                        } else {
-                            print("fetchAllQuizzes: couldn't parse array item")
-                        }
-                    }
-
-                    // TODO: save to local datebase
-                    with?(results)
+                    // parse data async in background
+                    DataManager.parseQuizzesAsync(spanshot: snap, with: { (quizzes) in
+                        // passing data to callback
+                        with?(quizzes)
+                        // saving to local database
+                        self.saveQuizzesToLocalAsync(quizzes, with: nil)
+                    })
                 },
                 withCancel: { (error) in
                     print("fetchAllQuizzes: " + error.localizedDescription)
@@ -88,16 +59,89 @@ class DataManager {
             return
         }
 
-        // set value ../users/{user_id}/answers/{quiz_id} to {answer}
-        firebase.child(Path.answerQuiz(userId: user.uid, quizId: quizId))
+        // set value of ../users/{user_id}/answers/{quiz_id} to {answer}
+        firebase.child(Api.answerQuiz(userId: user.uid, quizId: quizId))
                 .setValue(answerNumber, withCompletionBlock: { (error, _) in
                     if let error = error {
+                        // TODO: show error trough callback
                         print(error.localizedDescription)
                     } else {
-                        // TODO: save quiz ID to list of answered
+                        self.saveNewAnswerToLocal(quizId: quizId, answerNumber: answerNumber)
                     }
                     with?(error)
                 })
+    }
+
+
+    private static func parseQuizzesAsync(spanshot snap: FIRDataSnapshot, with: @escaping((_: [Quiz]) -> ())) {
+        DispatchQueue.global(qos: .background).async {
+            var results = [Quiz]()
+            guard let values = snap.value as? NSArray else {
+                print("parseQuizzesAsync: data is nil")
+                return
+            }
+
+            for value in values {
+                guard let value = value as? NSDictionary else {
+                    print("parseQuizzesAsync: array item is nil")
+                    continue
+                }
+                let quiz = Quiz.parseDictionary(data: value)
+
+                if quiz != nil {
+                    results.append(quiz!)
+                } else {
+                    print("parseQuizzesAsync: couldn't parse array item")
+                }
+            }
+
+            DispatchQueue.main.async {
+                with(results)
+            }
+        }
+    }
+
+
+    // local data
+
+
+    // may be extended to save answer number
+    private func saveNewAnswerToLocal(quizId: Int, answerNumber: Int) {
+        DispatchQueue.global(qos: .background).async {
+            var answers = NSKeyedUnarchiver.unarchiveObject(withFile: LocalPath.answers) as? [Int] ?? [Int]()
+            answers.append(quizId)
+            NSKeyedArchiver.archiveRootObject(answers, toFile: LocalPath.publicQuizzes)
+        }
+    }
+
+    private func getAnsweredIds() -> [Int] {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: LocalPath.answers) as? [Int] ?? [Int]()
+    }
+
+
+    private func saveQuizzesToLocalAsync(_ quizzes: [Quiz], with: (() -> ())?) {
+        DispatchQueue.global(qos: .background).async {
+            NSKeyedArchiver.archiveRootObject(quizzes, toFile: LocalPath.publicQuizzes)
+            with?()
+        }
+    }
+
+    public func getCachedQuizzesAsync(with: @escaping (_: [Quiz]?) -> ()) {
+        DispatchQueue.global(qos: .background).async {
+            let quizzes = NSKeyedUnarchiver.unarchiveObject(withFile: LocalPath.publicQuizzes) as? [Quiz]
+            DispatchQueue.main.async {
+                with(quizzes)
+            }
+        }
+    }
+
+    public func clearCache() {
+        do {
+            try FileManager.default.removeItem(atPath: LocalPath.publicQuizzes)
+            try FileManager.default.removeItem(atPath: LocalPath.answers)
+        } catch {
+            print("error while clearing cache")
+        }
     }
 
 

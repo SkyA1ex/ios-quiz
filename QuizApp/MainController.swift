@@ -38,7 +38,23 @@ class MainController: UIViewController {
         super.viewDidAppear(animated)
 
         if (checkUserSignedId()) {
+
+            dataManager.getCachedQuizzesAsync { quizzes in
+                print("CACHED DATA")
+                guard let quizzes = quizzes else {
+                    return
+                }
+
+                self.quizQuestionLabel.text = quizzes[1].question
+                self.labelAnswer1.text = quizzes[1].answer1
+                self.labelAnswer2.text = quizzes[1].answer2
+                self.labelAnswer3.text = quizzes[1].answer3
+                self.labelAnswer4.text = quizzes[1].answer4
+            }
+
+
             dataManager.fetchAllQuizzes(with: { (quizzes) in
+                print("NETWORK DATA")
                 self.quizQuestionLabel.text = quizzes[1].question
                 self.labelAnswer1.text = quizzes[1].answer1
                 self.labelAnswer2.text = quizzes[1].answer2
