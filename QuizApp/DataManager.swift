@@ -43,7 +43,7 @@ class DataManager {
                     DataManager.parseQuizzesAsync(spanshot: snap, with: { (quizzes) in
                         // filter already passed quizzes
                         let ids = self.getAnsweredIds()
-                        var filteredQuizzes = [Quiz]()
+                        var filteredQuizzes = [Quiz]() // TODO: replace by array filtering
                         for q in quizzes {
                             if !ids.contains(q.id!) {
                                 filteredQuizzes.append(q)

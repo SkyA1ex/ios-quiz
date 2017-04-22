@@ -14,6 +14,7 @@ import FirebaseDatabase
 
 class MainController: UIViewController {
 
+    @IBOutlet weak var buttonSkip: UIButton!
     @IBOutlet weak var quizQuestionLabel: UILabel!
 
     @IBOutlet weak var buttonAnswer1: UIButton!
@@ -21,10 +22,12 @@ class MainController: UIViewController {
     @IBOutlet weak var buttonAnswer3: UIButton!
     @IBOutlet weak var buttonAnswer4: UIButton!
 
+    @IBOutlet weak var labelLoading: UILabel!
     @IBOutlet weak var labelAnswer1: UILabel!
     @IBOutlet weak var labelAnswer2: UILabel!
     @IBOutlet weak var labelAnswer3: UILabel!
     @IBOutlet weak var labelAnswer4: UILabel!
+    @IBOutlet weak var layoutButtons: UIView!
 
     var dataManager: DataManager!
     var currentQuizIndex: Int?
@@ -79,7 +82,19 @@ class MainController: UIViewController {
     }
 
     private func showMainLoader(isShown: Bool) {
-        // TODO:
+        // TODO: refactor animations
+        buttonSkip.isHidden = isShown
+        if isShown {
+            quizQuestionLabel.isHidden = true
+            layoutButtons.isHidden = true
+            // animate loader
+            animateViewShow(labelLoading)
+        } else {
+            // animate buttons layout
+            animateViewShow(layoutButtons)
+            animateViewShow(quizQuestionLabel)
+            animateViewHide(labelLoading)
+        }
     }
 
     private func showAnsweringLoader(isShow: Bool) {
@@ -98,7 +113,7 @@ class MainController: UIViewController {
 
     private func showNextQuiz() {
         guard let quizzes = quizzes,
-              var quizIndex = currentQuizIndex else {
+              let quizIndex = currentQuizIndex else {
             print("showNextQuiz: error")
             return
         }
@@ -146,6 +161,11 @@ class MainController: UIViewController {
             }
         })
     }
+    
+    @IBAction func skipClicked(_ sender: UIButton) {
+        // TODO: implement
+    }
+    
 
 
     // buttons animation
@@ -199,6 +219,31 @@ class MainController: UIViewController {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let loginController = storyBoard.instantiateViewController(withIdentifier: "loginController") as! LoginController
         self.present(loginController, animated: true, completion: nil)
+    }
+
+
+    // other
+
+    private func animateViewHide(_ view: UIView) {
+        UIView.animate(withDuration: 0.25, delay: 0, options: [], animations: {
+            view.alpha = 0
+        }, completion: { finished in
+            // nothing for now
+            view.isHidden = true
+            view.alpha = 1
+        })
+    }
+
+    private func animateViewShow(_ view: UIView) {
+        if view.alpha == 1 {
+            view.alpha = 0
+        }
+        view.isHidden = false
+        UIView.animate(withDuration: 1.5, delay: 0, options: [], animations: {
+            view.alpha = 1
+        }, completion: { finished in
+            // nothing for now
+        })
     }
 
 }
