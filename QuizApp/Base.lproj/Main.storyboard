@@ -6,14 +6,16 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="SFText-Bold.otf">
             <string>SFUIText-Bold</string>
         </array>
-        <array key="SFText-Medium.otf">
-            <string>SFUIText-Medium</string>
+        <array key="SFText-Light.otf">
+            <string>SFUIText-Light</string>
         </array>
         <array key="SFText-Regular.otf">
             <string>SFUIText-Regular</string>
@@ -114,23 +116,157 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOM-BB-ZDB" userLabel="labelQuizQuestion">
-                                <rect key="frame" x="0.0" y="147" width="375" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Quiestion abc a bQuiestion abc a b Quiestion abc a b Quiestion abc a b">
-                                        <attributes>
-                                            <color key="NSColor" red="0.086274509803921567" green="0.66666666666666663" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="20" name="SFUIText-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lhu-kf-pn9" userLabel="layoutButtons">
+                                <rect key="frame" x="0.0" y="469" width="375" height="198"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="P4q-MX-CG1" userLabel="labelAnswer1">
+                                        <rect key="frame" x="30.5" y="30" width="147.5" height="59"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="0.88" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1ANSWER 1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="BhN-q8-hxH" userLabel="labelAnswer2">
+                                        <rect key="frame" x="197" y="30" width="147.5" height="59"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="0.88" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ANSWER 3" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Snq-os-fpl" userLabel="labelAnswer3">
+                                        <rect key="frame" x="30.5" y="115" width="147.5" height="47"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="0.88" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ANSWER 4" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Qes-RK-ue4" userLabel="labelAnswer4">
+                                        <rect key="frame" x="212" y="109" width="118" height="59"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="0.88" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCS-XS-EV4" userLabel="buttonAnswer1">
+                                        <rect key="frame" x="30" y="30" width="147.5" height="59"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="XCS-XS-EV4" secondAttribute="height" multiplier="5:2" id="4WU-uA-Ohv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="24"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="answerClicked:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="Bvx-G2-nQd"/>
+                                            <action selector="buttonTochedDown:" destination="xXe-Bd-eQY" eventType="touchDown" id="PMx-uA-z4q"/>
+                                            <action selector="buttonTochedDown:" destination="xXe-Bd-eQY" eventType="touchDragInside" id="niM-7X-cCO"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="22O-WK-acN"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchUpOutside" id="PhD-tZ-XJa"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchCancel" id="cJO-yV-deF"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchDragOutside" id="oH7-J4-geG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3n-z4-Udw" userLabel="buttonAnswer2">
+                                        <rect key="frame" x="197" y="30" width="147.5" height="59"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="24"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="answerClicked:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="hJr-jP-MoG"/>
+                                            <action selector="buttonTochedDown:" destination="xXe-Bd-eQY" eventType="touchDragInside" id="QbX-YQ-WqI"/>
+                                            <action selector="buttonTochedDown:" destination="xXe-Bd-eQY" eventType="touchDown" id="SID-4e-Pjc"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchDragOutside" id="HSR-c0-wWD"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="gUo-iS-VTu"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchUpOutside" id="h5b-0c-rrp"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchCancel" id="w0b-fP-dan"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i89-zM-peL" userLabel="buttonAnswer3">
+                                        <rect key="frame" x="30" y="109" width="147.5" height="59"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="24"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="answerClicked:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="2eC-B1-hOX"/>
+                                            <action selector="buttonTochedDown:" destination="xXe-Bd-eQY" eventType="touchDown" id="gxN-Xc-dlm"/>
+                                            <action selector="buttonTochedDown:" destination="xXe-Bd-eQY" eventType="touchDragInside" id="kIg-VE-aQx"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchCancel" id="EUK-NQ-rUY"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="NTh-9Q-GXp"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchDragOutside" id="iAa-uJ-q6i"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchUpOutside" id="sSC-KL-VH1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCH-JU-g4r" userLabel="buttonAnswer4">
+                                        <rect key="frame" x="197" y="109" width="147.5" height="59"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="24"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="answerClicked:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="peU-z8-2yj"/>
+                                            <action selector="buttonTochedDown:" destination="xXe-Bd-eQY" eventType="touchDragInside" id="4CD-pC-E4l"/>
+                                            <action selector="buttonTochedDown:" destination="xXe-Bd-eQY" eventType="touchDown" id="JYG-vn-Fe5"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchDragOutside" id="Pok-k0-JFj"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchCancel" id="Vjc-Tr-20G"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchUpOutside" id="ecN-df-y3Y"/>
+                                            <action selector="buttonTochedUpOutside:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="jHb-yS-oUO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Snq-os-fpl" firstAttribute="height" secondItem="i89-zM-peL" secondAttribute="height" multiplier="0.8" id="2ch-UX-DPb"/>
+                                    <constraint firstItem="Snq-os-fpl" firstAttribute="centerY" secondItem="i89-zM-peL" secondAttribute="centerY" id="6EC-2t-yBf"/>
+                                    <constraint firstItem="XCS-XS-EV4" firstAttribute="top" secondItem="Lhu-kf-pn9" secondAttribute="top" constant="30" id="7OY-AK-mf4"/>
+                                    <constraint firstItem="cCH-JU-g4r" firstAttribute="top" secondItem="I3n-z4-Udw" secondAttribute="bottom" constant="20" id="A5z-X4-riG"/>
+                                    <constraint firstItem="cCH-JU-g4r" firstAttribute="leading" secondItem="i89-zM-peL" secondAttribute="trailing" constant="20" id="BKi-DE-Xbu"/>
+                                    <constraint firstItem="i89-zM-peL" firstAttribute="height" secondItem="XCS-XS-EV4" secondAttribute="height" id="CKB-Ls-du9"/>
+                                    <constraint firstAttribute="bottom" secondItem="cCH-JU-g4r" secondAttribute="bottom" constant="30" id="FY5-Ru-ibc"/>
+                                    <constraint firstItem="i89-zM-peL" firstAttribute="top" secondItem="XCS-XS-EV4" secondAttribute="bottom" constant="20" id="H52-78-5dJ"/>
+                                    <constraint firstItem="Qes-RK-ue4" firstAttribute="height" secondItem="cCH-JU-g4r" secondAttribute="height" id="Hz6-bp-aO8"/>
+                                    <constraint firstAttribute="trailing" secondItem="I3n-z4-Udw" secondAttribute="trailing" constant="30" id="JLw-ia-fbJ"/>
+                                    <constraint firstItem="cCH-JU-g4r" firstAttribute="height" secondItem="XCS-XS-EV4" secondAttribute="height" id="JOV-BP-DUx"/>
+                                    <constraint firstItem="cCH-JU-g4r" firstAttribute="centerY" secondItem="i89-zM-peL" secondAttribute="centerY" id="OHV-Vm-Eew"/>
+                                    <constraint firstItem="P4q-MX-CG1" firstAttribute="centerY" secondItem="XCS-XS-EV4" secondAttribute="centerY" id="QCa-Ym-Ka9"/>
+                                    <constraint firstItem="I3n-z4-Udw" firstAttribute="leading" secondItem="XCS-XS-EV4" secondAttribute="trailing" constant="20" id="Vww-Id-oQn"/>
+                                    <constraint firstAttribute="bottom" secondItem="i89-zM-peL" secondAttribute="bottom" constant="30" id="Z9l-3H-4fS"/>
+                                    <constraint firstItem="XCS-XS-EV4" firstAttribute="leading" secondItem="Lhu-kf-pn9" secondAttribute="leading" constant="30" id="ZJz-6r-sAg"/>
+                                    <constraint firstItem="Snq-os-fpl" firstAttribute="centerX" secondItem="i89-zM-peL" secondAttribute="centerX" id="ZLQ-5p-Mev"/>
+                                    <constraint firstItem="BhN-q8-hxH" firstAttribute="centerY" secondItem="I3n-z4-Udw" secondAttribute="centerY" id="acC-go-D1l"/>
+                                    <constraint firstItem="Qes-RK-ue4" firstAttribute="centerY" secondItem="cCH-JU-g4r" secondAttribute="centerY" id="alP-go-ZfV"/>
+                                    <constraint firstItem="P4q-MX-CG1" firstAttribute="height" secondItem="XCS-XS-EV4" secondAttribute="height" id="by7-1M-mRw"/>
+                                    <constraint firstItem="I3n-z4-Udw" firstAttribute="width" secondItem="XCS-XS-EV4" secondAttribute="width" id="cFI-6L-b1t"/>
+                                    <constraint firstItem="Snq-os-fpl" firstAttribute="width" secondItem="i89-zM-peL" secondAttribute="width" id="cce-Lw-Zsf"/>
+                                    <constraint firstItem="I3n-z4-Udw" firstAttribute="centerY" secondItem="XCS-XS-EV4" secondAttribute="centerY" id="eh3-9N-dak"/>
+                                    <constraint firstItem="BhN-q8-hxH" firstAttribute="width" secondItem="I3n-z4-Udw" secondAttribute="width" id="fCp-Mh-bS5"/>
+                                    <constraint firstItem="Qes-RK-ue4" firstAttribute="centerX" secondItem="cCH-JU-g4r" secondAttribute="centerX" id="liv-kN-ar5"/>
+                                    <constraint firstItem="i89-zM-peL" firstAttribute="leading" secondItem="Lhu-kf-pn9" secondAttribute="leading" constant="30" id="p10-hL-e7e"/>
+                                    <constraint firstItem="BhN-q8-hxH" firstAttribute="centerX" secondItem="I3n-z4-Udw" secondAttribute="centerX" id="pag-s6-ZQM"/>
+                                    <constraint firstItem="BhN-q8-hxH" firstAttribute="height" secondItem="I3n-z4-Udw" secondAttribute="height" id="tdd-nG-yIT"/>
+                                    <constraint firstItem="P4q-MX-CG1" firstAttribute="centerX" secondItem="XCS-XS-EV4" secondAttribute="centerX" id="tze-UZ-ckh"/>
+                                    <constraint firstItem="Qes-RK-ue4" firstAttribute="width" secondItem="cCH-JU-g4r" secondAttribute="width" multiplier="0.8" id="uAr-Sd-rFb"/>
+                                    <constraint firstItem="P4q-MX-CG1" firstAttribute="width" secondItem="XCS-XS-EV4" secondAttribute="width" id="vFh-3V-Qwf"/>
+                                    <constraint firstItem="cCH-JU-g4r" firstAttribute="width" secondItem="i89-zM-peL" secondAttribute="width" id="w2U-9t-ibS"/>
+                                    <constraint firstItem="I3n-z4-Udw" firstAttribute="height" secondItem="XCS-XS-EV4" secondAttribute="height" id="yfH-ua-GOw"/>
+                                    <constraint firstItem="I3n-z4-Udw" firstAttribute="top" secondItem="Lhu-kf-pn9" secondAttribute="top" constant="30" id="yxw-2r-8VK"/>
+                                    <constraint firstAttribute="trailing" secondItem="cCH-JU-g4r" secondAttribute="trailing" constant="30" id="zUD-Pv-0V2"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="50" bottom="8" right="10"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="26" translatesAutoresizingMaskIntoConstraints="NO" id="yOM-BB-ZDB" userLabel="labelQuizQuestion">
+                                <rect key="frame" x="30" y="130" width="315" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="g7i-bv-za6"/>
+                                </constraints>
+                                <string key="text">All of this did happen. But such accounts missed the most crucial aspects of what was at stake in the Berkeley clashes, and thus fail to explain why there were aggressive altercations at all. </string>
+                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="42"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.88" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0N-yG-tVG" userLabel="buttonLogout">
-                                <rect key="frame" x="16" y="28" width="67" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0N-yG-tVG" userLabel="buttonLogout">
+                                <rect key="frame" x="30" y="40" width="53" height="29"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
                                 <state key="normal" title="Log Out">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -139,70 +275,28 @@
                                     <action selector="logoutClicked:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="9Qu-JA-96k"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lhu-kf-pn9">
-                                <rect key="frame" x="0.0" y="437" width="375" height="230"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3n-z4-Udw" userLabel="buttonAnswer2">
-                                        <rect key="frame" x="197" y="20" width="150" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                        <color key="backgroundColor" red="0.086274509799999996" green="0.66666666669999997" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="18"/>
-                                        <state key="normal" title="Answer 2">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="answerClicked:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="hJr-jP-MoG"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCS-XS-EV4" userLabel="buttonAnswer1">
-                                        <rect key="frame" x="27" y="20" width="150" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                        <color key="backgroundColor" red="0.086274509799999996" green="0.66666666669999997" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="18"/>
-                                        <state key="normal" title="Answer 1">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="answerClicked:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="Bvx-G2-nQd"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCH-JU-g4r" userLabel="buttonAnswer4">
-                                        <rect key="frame" x="197" y="120" width="150" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                        <color key="backgroundColor" red="0.086274509799999996" green="0.66666666669999997" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="18"/>
-                                        <state key="normal" title="Answer 4">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="answerClicked:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="peU-z8-2yj"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i89-zM-peL" userLabel="buttonAnswer3">
-                                        <rect key="frame" x="27" y="120" width="150" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                        <color key="backgroundColor" red="0.086274509799999996" green="0.66666666669999997" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="18"/>
-                                        <state key="normal" title="Answer 3">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="answerClicked:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="2eC-B1-hOX"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <edgeInsets key="layoutMargins" top="8" left="50" bottom="8" right="10"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Opb-dL-cJC" firstAttribute="top" secondItem="Lhu-kf-pn9" secondAttribute="bottom" id="Ggg-Hr-sNo"/>
+                            <constraint firstAttribute="trailing" secondItem="Lhu-kf-pn9" secondAttribute="trailing" id="P93-RO-0ik"/>
+                            <constraint firstItem="t0N-yG-tVG" firstAttribute="top" secondItem="Fyr-yT-AaD" secondAttribute="bottom" constant="20" id="PkU-eN-naw"/>
+                            <constraint firstItem="yOM-BB-ZDB" firstAttribute="top" secondItem="Fyr-yT-AaD" secondAttribute="bottom" constant="110" id="Wp0-kR-GEn"/>
+                            <constraint firstItem="yOM-BB-ZDB" firstAttribute="leading" secondItem="E9R-s6-6ah" secondAttribute="leading" constant="30" id="aa6-fj-DS0"/>
+                            <constraint firstItem="t0N-yG-tVG" firstAttribute="leading" secondItem="E9R-s6-6ah" secondAttribute="leading" constant="30" id="ogg-Ji-egQ"/>
+                            <constraint firstItem="Lhu-kf-pn9" firstAttribute="leading" secondItem="E9R-s6-6ah" secondAttribute="leading" id="pDY-7g-ZSN"/>
+                            <constraint firstAttribute="trailing" secondItem="yOM-BB-ZDB" secondAttribute="trailing" constant="30" id="sfr-oC-2yy"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="buttonAnswer1" destination="XCS-XS-EV4" id="N7f-i4-gnG"/>
                         <outlet property="buttonAnswer2" destination="I3n-z4-Udw" id="P8w-DX-NA8"/>
                         <outlet property="buttonAnswer3" destination="i89-zM-peL" id="NhJ-xM-oxO"/>
                         <outlet property="buttonAnswer4" destination="cCH-JU-g4r" id="J8t-zb-Hn7"/>
+                        <outlet property="labelAnswer1" destination="P4q-MX-CG1" id="sKH-i1-IVJ"/>
+                        <outlet property="labelAnswer2" destination="BhN-q8-hxH" id="v4n-0k-GBy"/>
+                        <outlet property="labelAnswer3" destination="Snq-os-fpl" id="1aT-Lx-Nuq"/>
+                        <outlet property="labelAnswer4" destination="Qes-RK-ue4" id="1re-Xj-rZ0"/>
                         <outlet property="quizQuestionLabel" destination="yOM-BB-ZDB" id="I3p-Kb-inL"/>
                     </connections>
                 </viewController>

@@ -21,6 +21,10 @@ class MainController: UIViewController {
     @IBOutlet weak var buttonAnswer3: UIButton!
     @IBOutlet weak var buttonAnswer4: UIButton!
 
+    @IBOutlet weak var labelAnswer1: UILabel!
+    @IBOutlet weak var labelAnswer2: UILabel!
+    @IBOutlet weak var labelAnswer3: UILabel!
+    @IBOutlet weak var labelAnswer4: UILabel!
 
     var dataManager: DataManager!
 
@@ -36,10 +40,10 @@ class MainController: UIViewController {
         if (checkUserSignedId()) {
             dataManager.fetchAllQuizzes(with: { (quizzes) in
                 self.quizQuestionLabel.text = quizzes[1].question
-                self.buttonAnswer1.setTitle(quizzes[1].answer1, for: .normal)
-                self.buttonAnswer2.setTitle(quizzes[1].answer2, for: .normal)
-                self.buttonAnswer3.setTitle(quizzes[1].answer3, for: .normal)
-                self.buttonAnswer4.setTitle(quizzes[1].answer4, for: .normal)
+                self.labelAnswer1.text = quizzes[1].answer1
+                self.labelAnswer2.text = quizzes[1].answer2
+                self.labelAnswer3.text = quizzes[1].answer3
+                self.labelAnswer4.text = quizzes[1].answer4
             })
         }
     }
@@ -64,13 +68,31 @@ class MainController: UIViewController {
             return
         }
 
-        dataManager.sendAnswer(quizId: 10, answerNumber: answer, with: { (error) in
-            if let error = error {
-                Utils.showAlert(self, "Error while sending an answer", error.localizedDescription)
-            } else {
-                // TODO: show next quiz!
-            }
-        })
+        animateButtonDark(sender)
+
+        print(answer)
+    }
+
+
+    @IBAction func buttonTochedDown(_ sender: UIButton) {
+        animateButtonDark(sender)
+    }
+
+    @IBAction func buttonTochedUpOutside(_ sender: UIButton) {
+        animateButtonLight(sender)
+    }
+
+
+    private func animateButtonDark(_ button: UIButton) {
+        UIView.animate(withDuration: 0.25) {
+            button.backgroundColor = UIColor.init(redInt: 0, blueInt: 0, greenInt: 0, alpha: 0.4)
+        }
+    }
+
+    private func animateButtonLight(_ button: UIButton) {
+        UIView.animate(withDuration: 0.25) {
+            button.backgroundColor = UIColor.init(redInt: 0, blueInt: 0, greenInt: 0, alpha: 0)
+        }
     }
 
 
