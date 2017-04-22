@@ -27,6 +27,9 @@ class MainController: UIViewController {
     @IBOutlet weak var labelAnswer4: UILabel!
 
     var dataManager: DataManager!
+    var currentQuizIndex: Int?
+    var currentQuizId: Int?
+    var quizzes: [Quiz]?
 
 
     override func viewDidLoad() {
@@ -38,32 +41,79 @@ class MainController: UIViewController {
         super.viewDidAppear(animated)
 
         if (checkUserSignedId()) {
-
-            dataManager.getCachedQuizzesAsync { quizzes in
-                print("CACHED DATA")
-                guard let quizzes = quizzes else {
-                    return
-                }
-
-                self.quizQuestionLabel.text = quizzes[1].question
-                self.labelAnswer1.text = quizzes[1].answer1
-                self.labelAnswer2.text = quizzes[1].answer2
-                self.labelAnswer3.text = quizzes[1].answer3
-                self.labelAnswer4.text = quizzes[1].answer4
-            }
-
-
-            dataManager.fetchAllQuizzes(with: { (quizzes) in
-                print("NETWORK DATA")
-                self.quizQuestionLabel.text = quizzes[1].question
-                self.labelAnswer1.text = quizzes[1].answer1
-                self.labelAnswer2.text = quizzes[1].answer2
-                self.labelAnswer3.text = quizzes[1].answer3
-                self.labelAnswer4.text = quizzes[1].answer4
-            })
+            start()
         }
     }
 
+    private func start() {
+        showMainLoader(isShown: true)
+        // dataManager.getCachedQuizzesAsync(with: self.setQuizzes)
+        dataManager.fetchAllQuizzes(with: self.setQuizzes, withError: { (error) in
+            self.showMainLoader(isShown: false)
+            self.showError(title: "Can't load quizzes", error: error?.localizedDescription)
+        })
+    }
+
+
+    // UI methods
+
+    private func setQuizzes(newQuizzes: [Quiz]) {
+        showMainLoader(isShown: false)
+        if (newQuizzes.count > 0) {
+            quizzes = newQuizzes
+            currentQuizIndex = 0
+            currentQuizId = quizzes![0].id
+            showQuiz(quizzes![0])
+        } else {
+            showNoQuizzes()
+        }
+    }
+
+    private func showError(title: String?, error: String?) {
+        Utils.showAlert(self, title, error)
+    }
+
+    private func showNoQuizzes() {
+        print("no quizzes")
+        // TODO:
+    }
+
+    private func showMainLoader(isShown: Bool) {
+        // TODO:
+    }
+
+    private func showAnsweringLoader(isShow: Bool) {
+        // enable/disable answer buttons
+        // TODO:
+    }
+
+    private func showQuiz(_ quiz: Quiz) {
+        // TODO add animation
+        quizQuestionLabel.text = quiz.question
+        labelAnswer1.text = quiz.answer1
+        labelAnswer2.text = quiz.answer2
+        labelAnswer3.text = quiz.answer3
+        labelAnswer4.text = quiz.answer4
+    }
+
+    private func showNextQuiz() {
+        guard let quizzes = quizzes,
+              var quizIndex = currentQuizIndex else {
+            print("showNextQuiz: error")
+            return
+        }
+
+        if quizIndex + 1 <= quizzes.count - 1 {
+            currentQuizIndex! += 1 // can I use quizIndex here?
+            let nextQuiz = quizzes[currentQuizIndex!]
+            currentQuizId = nextQuiz.id
+            showQuiz(nextQuiz)
+        } else {
+            showNoQuizzes()
+            currentQuizIndex = nil
+            currentQuizId = nil
+        }
+    }
 
 
     // clicks
@@ -84,11 +134,21 @@ class MainController: UIViewController {
             return
         }
 
-        animateButtonDark(sender)
-
-        print(answer)
+        showAnsweringLoader(isShow: true)
+        dataManager.sendAnswer(quizId: currentQuizId!, answerNumber: answer, with: { (error) in
+            self.showAnsweringLoader(isShow: false)
+            if (error == nil) {
+                // sending successful
+                self.showNextQuiz()
+            } else {
+                // error occurred
+                self.showError(title: "Sending answer error", error: error?.localizedDescription)
+            }
+        })
     }
 
+
+    // buttons animation
 
     @IBAction func buttonTochedDown(_ sender: UIButton) {
         animateButtonDark(sender)
@@ -131,6 +191,7 @@ class MainController: UIViewController {
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
+        dataManager.clearCache()
         goToLoginController()
     }
 

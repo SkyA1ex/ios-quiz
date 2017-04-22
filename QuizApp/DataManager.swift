@@ -36,19 +36,28 @@ class DataManager {
     }
 
 
-    func fetchAllQuizzes(with: ((_: [Quiz]) -> ())?) {
+    func fetchAllQuizzes(with: ((_: [Quiz]) -> ())?, withError: ((_: Error?) -> ())?) {
         firebase.child(Api.publicQuizzes).observeSingleEvent(of: .value,
                 with: { (snap) in
-                    // parse data async in background
+                    // parse data async in background thread
                     DataManager.parseQuizzesAsync(spanshot: snap, with: { (quizzes) in
+                        // filter already passed quizzes
+                        let ids = self.getAnsweredIds()
+                        var filteredQuizzes = [Quiz]()
+                        for q in quizzes {
+                            if !ids.contains(q.id!) {
+                                filteredQuizzes.append(q)
+                            }
+                        }
                         // passing data to callback
-                        with?(quizzes)
+                        with?(filteredQuizzes)
                         // saving to local database
-                        self.saveQuizzesToLocalAsync(quizzes, with: nil)
+                        self.saveQuizzesToLocalAsync(filteredQuizzes, with: nil)
                     })
                 },
                 withCancel: { (error) in
                     print("fetchAllQuizzes: " + error.localizedDescription)
+                    withError?(error)
                 })
     }
 
@@ -63,7 +72,6 @@ class DataManager {
         firebase.child(Api.answerQuiz(userId: user.uid, quizId: quizId))
                 .setValue(answerNumber, withCompletionBlock: { (error, _) in
                     if let error = error {
-                        // TODO: show error trough callback
                         print(error.localizedDescription)
                     } else {
                         self.saveNewAnswerToLocal(quizId: quizId, answerNumber: answerNumber)
@@ -110,7 +118,7 @@ class DataManager {
         DispatchQueue.global(qos: .background).async {
             var answers = NSKeyedUnarchiver.unarchiveObject(withFile: LocalPath.answers) as? [Int] ?? [Int]()
             answers.append(quizId)
-            NSKeyedArchiver.archiveRootObject(answers, toFile: LocalPath.publicQuizzes)
+            NSKeyedArchiver.archiveRootObject(answers, toFile: LocalPath.answers)
         }
     }
 
@@ -139,8 +147,8 @@ class DataManager {
         do {
             try FileManager.default.removeItem(atPath: LocalPath.publicQuizzes)
             try FileManager.default.removeItem(atPath: LocalPath.answers)
-        } catch {
-            print("error while clearing cache")
+        } catch let error {
+            print("error while clearing cache: " + error.localizedDescription)
         }
     }
 
