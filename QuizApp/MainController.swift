@@ -14,8 +14,10 @@ import FirebaseDatabase
 
 class MainController: UIViewController {
 
+    @IBOutlet weak var buttonCircle: UIButton!
     @IBOutlet weak var buttonSkip: UIButton!
     @IBOutlet weak var quizQuestionLabel: UILabel!
+    @IBOutlet weak var labelEmpty: UILabel!
 
     @IBOutlet weak var buttonAnswer1: UIButton!
     @IBOutlet weak var buttonAnswer2: UIButton!
@@ -77,29 +79,35 @@ class MainController: UIViewController {
     }
 
     private func showNoQuizzes() {
-        print("no quizzes")
-        // TODO:
+        animateViewHide(buttonSkip)
+        animateViewHide(quizQuestionLabel)
+        animateViewHide(layoutButtons)
+        animateViewShow(labelEmpty)
     }
 
     private func showMainLoader(isShown: Bool) {
-        // TODO: refactor animations
-        buttonSkip.isHidden = isShown
         if isShown {
             quizQuestionLabel.isHidden = true
             layoutButtons.isHidden = true
-            // animate loader
+            buttonSkip.isHidden = true
             animateViewShow(labelLoading)
         } else {
             // animate buttons layout
             animateViewShow(layoutButtons)
             animateViewShow(quizQuestionLabel)
+            animateViewShow(buttonSkip)
             animateViewHide(labelLoading)
         }
     }
 
     private func showAnsweringLoader(isShow: Bool) {
+        // TODO: add loader
         // enable/disable answer buttons
-        // TODO:
+        buttonAnswer1.isEnabled = !isShow
+        buttonAnswer2.isEnabled = !isShow
+        buttonAnswer3.isEnabled = !isShow
+        buttonAnswer4.isEnabled = !isShow
+        buttonSkip.isEnabled = !isShow
     }
 
     private func showQuiz(_ quiz: Quiz) {
@@ -153,7 +161,7 @@ class MainController: UIViewController {
         dataManager.sendAnswer(quizId: currentQuizId!, answerNumber: answer, with: { (error) in
             self.showAnsweringLoader(isShow: false)
             if (error == nil) {
-                // sending successful
+                // sent successfully
                 self.showNextQuiz()
             } else {
                 // error occurred
@@ -161,11 +169,12 @@ class MainController: UIViewController {
             }
         })
     }
-    
+
     @IBAction func skipClicked(_ sender: UIButton) {
-        // TODO: implement
+        dataManager.saveQuizAsSkippedToLocal(quizId: currentQuizId!)
+        showNextQuiz()
     }
-    
+
 
 
     // buttons animation
@@ -244,6 +253,15 @@ class MainController: UIViewController {
         }, completion: { finished in
             // nothing for now
         })
+    }
+
+
+    // button circle
+
+    @IBAction func onCircleUpInside(_ sender: UIButton) {
+        UIView.animate(withDuration: 2) {
+            sender.bounds.size.width *= 2
+        }
     }
 
 }

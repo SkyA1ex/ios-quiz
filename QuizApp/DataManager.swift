@@ -122,6 +122,10 @@ class DataManager {
         }
     }
 
+    public func saveQuizAsSkippedToLocal(quizId: Int) {
+        saveNewAnswerToLocal(quizId: quizId, answerNumber: -1)
+    }
+
     private func getAnsweredIds() -> [Int] {
         return NSKeyedUnarchiver.unarchiveObject(withFile: LocalPath.answers) as? [Int] ?? [Int]()
     }
