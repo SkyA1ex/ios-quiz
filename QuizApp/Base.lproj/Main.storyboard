@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -117,8 +116,82 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="26" translatesAutoresizingMaskIntoConstraints="NO" id="yOM-BB-ZDB" userLabel="labelQuizQuestion">
+                                <rect key="frame" x="30" y="130" width="315" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="g7i-bv-za6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="42"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.88" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data is loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="vOB-Tb-N8P" userLabel="labelLoading">
+                                <rect key="frame" x="30" y="311.5" width="315" height="45.5"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="38"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qB-Vf-eB4" userLabel="IlayoutNoQuizzes">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiy-1P-FZF" userLabel="buttonCircleLeft">
+                                        <rect key="frame" x="50" y="572" width="50" height="50"/>
+                                        <color key="backgroundColor" red="0.0" green="0.74901960784313726" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="E8M-qg-raa"/>
+                                            <constraint firstAttribute="width" constant="50" id="Wwv-kL-9TR"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="circleLeftDown:" destination="xXe-Bd-eQY" eventType="touchDown" id="GTA-ld-SVD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHy-Md-HIT" userLabel="buttonCircleRight">
+                                        <rect key="frame" x="275" y="572" width="50" height="50"/>
+                                        <color key="backgroundColor" red="1" green="0.6062972923637584" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="8fg-BS-J4N"/>
+                                            <constraint firstAttribute="width" constant="50" id="U37-Pa-Q7Q"/>
+                                            <constraint firstAttribute="height" constant="50" id="bjm-Ez-aDJ"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="circleRightDown:" destination="xXe-Bd-eQY" eventType="touchDown" id="Cuw-Cq-cyM"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no more quizzes today for you. Get some rest and come tomorrow." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="u8a-fS-pj3" userLabel="labelEmpty">
+                                        <rect key="frame" x="30" y="150" width="315" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="bjl-uL-jED"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="38"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="u8a-fS-pj3" firstAttribute="top" secondItem="4qB-Vf-eB4" secondAttribute="top" constant="150" id="3Mg-lJ-Yod"/>
+                                    <constraint firstItem="u8a-fS-pj3" firstAttribute="centerX" secondItem="4qB-Vf-eB4" secondAttribute="centerX" id="4d2-1p-lij"/>
+                                    <constraint firstAttribute="trailing" secondItem="pHy-Md-HIT" secondAttribute="trailing" constant="50" id="9NZ-QT-OSX"/>
+                                    <constraint firstItem="u8a-fS-pj3" firstAttribute="leading" secondItem="4qB-Vf-eB4" secondAttribute="leading" constant="30" id="ByU-kV-obh"/>
+                                    <constraint firstAttribute="bottom" secondItem="pHy-Md-HIT" secondAttribute="bottom" constant="-25" id="SJt-Nb-Ioz"/>
+                                    <constraint firstAttribute="trailing" secondItem="u8a-fS-pj3" secondAttribute="trailing" constant="30" id="SaF-NP-8rC"/>
+                                    <constraint firstAttribute="bottom" secondItem="kiy-1P-FZF" secondAttribute="bottom" constant="-25" id="rbr-z2-OCD"/>
+                                    <constraint firstItem="kiy-1P-FZF" firstAttribute="leading" secondItem="4qB-Vf-eB4" secondAttribute="leading" constant="50" id="rsZ-xc-v2D"/>
+                                </constraints>
+                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lhu-kf-pn9" userLabel="layoutButtons">
-                                <rect key="frame" x="0.0" y="468.5" width="375" height="198.5"/>
+                                <rect key="frame" x="0.0" y="468" width="375" height="198.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="P4q-MX-CG1" userLabel="labelAnswer1">
                                         <rect key="frame" x="30.5" y="30" width="147.5" height="59"/>
@@ -256,15 +329,6 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="50" bottom="8" right="10"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="26" translatesAutoresizingMaskIntoConstraints="NO" id="yOM-BB-ZDB" userLabel="labelQuizQuestion">
-                                <rect key="frame" x="30" y="130" width="315" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="g7i-bv-za6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="42"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.88" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0N-yG-tVG" userLabel="buttonLogout">
                                 <rect key="frame" x="30" y="40" width="53" height="29"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
@@ -275,18 +339,6 @@
                                     <action selector="logoutClicked:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="9Qu-JA-96k"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no more quizzes today for you. Get some rest and come tomorrow." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="u8a-fS-pj3" userLabel="labelEmpty">
-                                <rect key="frame" x="46" y="266" width="283" height="136.5"/>
-                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="38"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data is loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="vOB-Tb-N8P" userLabel="labelLoading">
-                                <rect key="frame" x="30" y="311.5" width="315" height="45.5"/>
-                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="38"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jD2-Gs-Lqk" userLabel="buttonSkip">
                                 <rect key="frame" x="300" y="40" width="45" height="29"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
@@ -297,68 +349,45 @@
                                     <action selector="skipClicked:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="lJN-yP-UXg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiy-1P-FZF" userLabel="buttonCircle">
-                                <rect key="frame" x="299" y="308" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.74901960784313726" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="E8M-qg-raa"/>
-                                    <constraint firstAttribute="width" constant="50" id="Wwv-kL-9TR"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="onCircleUpInside:" destination="xXe-Bd-eQY" eventType="touchUpInside" id="joS-uD-3xW"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="u8a-fS-pj3" firstAttribute="leading" secondItem="E9R-s6-6ah" secondAttribute="leadingMargin" constant="30" id="2YF-sB-J0K"/>
-                            <constraint firstItem="u8a-fS-pj3" firstAttribute="centerY" secondItem="E9R-s6-6ah" secondAttribute="centerY" id="4vl-R7-W98"/>
-                            <constraint firstItem="u8a-fS-pj3" firstAttribute="centerX" secondItem="E9R-s6-6ah" secondAttribute="centerX" id="5cX-ow-irx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="u8a-fS-pj3" secondAttribute="trailing" constant="30" id="63r-zh-11r"/>
                             <constraint firstItem="jD2-Gs-Lqk" firstAttribute="height" secondItem="t0N-yG-tVG" secondAttribute="height" id="814-CU-y2A"/>
                             <constraint firstItem="Opb-dL-cJC" firstAttribute="top" secondItem="Lhu-kf-pn9" secondAttribute="bottom" id="Ggg-Hr-sNo"/>
                             <constraint firstItem="vOB-Tb-N8P" firstAttribute="centerY" secondItem="E9R-s6-6ah" secondAttribute="centerY" id="Gls-cG-wCt"/>
+                            <constraint firstItem="Opb-dL-cJC" firstAttribute="top" secondItem="4qB-Vf-eB4" secondAttribute="bottom" id="JLB-G9-ece"/>
                             <constraint firstAttribute="trailing" secondItem="Lhu-kf-pn9" secondAttribute="trailing" id="P93-RO-0ik"/>
                             <constraint firstItem="t0N-yG-tVG" firstAttribute="top" secondItem="Fyr-yT-AaD" secondAttribute="bottom" constant="20" id="PkU-eN-naw"/>
-                            <constraint firstItem="kiy-1P-FZF" firstAttribute="centerY" secondItem="E9R-s6-6ah" secondAttribute="centerY" id="QFA-Bf-3lI"/>
+                            <constraint firstItem="4qB-Vf-eB4" firstAttribute="leading" secondItem="E9R-s6-6ah" secondAttribute="leading" id="WoX-0C-1SO"/>
                             <constraint firstItem="yOM-BB-ZDB" firstAttribute="top" secondItem="Fyr-yT-AaD" secondAttribute="bottom" constant="110" id="Wp0-kR-GEn"/>
                             <constraint firstItem="yOM-BB-ZDB" firstAttribute="leading" secondItem="E9R-s6-6ah" secondAttribute="leading" constant="30" id="aa6-fj-DS0"/>
+                            <constraint firstAttribute="trailing" secondItem="4qB-Vf-eB4" secondAttribute="trailing" id="aka-oC-hdw"/>
                             <constraint firstItem="jD2-Gs-Lqk" firstAttribute="top" secondItem="Fyr-yT-AaD" secondAttribute="bottom" constant="20" id="dbA-sq-A1b"/>
                             <constraint firstAttribute="trailing" secondItem="vOB-Tb-N8P" secondAttribute="trailing" constant="30" id="fRp-uT-50p"/>
                             <constraint firstItem="vOB-Tb-N8P" firstAttribute="leading" secondItem="E9R-s6-6ah" secondAttribute="leading" constant="30" id="hKM-6q-ASQ"/>
                             <constraint firstItem="vOB-Tb-N8P" firstAttribute="centerX" secondItem="E9R-s6-6ah" secondAttribute="centerX" id="o7g-jb-e9I"/>
                             <constraint firstItem="t0N-yG-tVG" firstAttribute="leading" secondItem="E9R-s6-6ah" secondAttribute="leading" constant="30" id="ogg-Ji-egQ"/>
                             <constraint firstAttribute="trailing" secondItem="jD2-Gs-Lqk" secondAttribute="trailing" constant="30" id="ouM-ZH-vJ8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kiy-1P-FZF" secondAttribute="trailing" constant="10" id="pDQ-Mh-PlU"/>
                             <constraint firstItem="Lhu-kf-pn9" firstAttribute="leading" secondItem="E9R-s6-6ah" secondAttribute="leading" id="pDY-7g-ZSN"/>
+                            <constraint firstItem="4qB-Vf-eB4" firstAttribute="top" secondItem="Fyr-yT-AaD" secondAttribute="bottom" constant="50" id="pOA-Ur-NYp"/>
                             <constraint firstAttribute="trailing" secondItem="yOM-BB-ZDB" secondAttribute="trailing" constant="30" id="sfr-oC-2yy"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="kiy-1P-FZF"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="buttonAnswer1" destination="XCS-XS-EV4" id="N7f-i4-gnG"/>
                         <outlet property="buttonAnswer2" destination="I3n-z4-Udw" id="P8w-DX-NA8"/>
                         <outlet property="buttonAnswer3" destination="i89-zM-peL" id="NhJ-xM-oxO"/>
                         <outlet property="buttonAnswer4" destination="cCH-JU-g4r" id="J8t-zb-Hn7"/>
-                        <outlet property="buttonCircle" destination="kiy-1P-FZF" id="TuE-iK-XTm"/>
+                        <outlet property="buttonCircleLeft" destination="kiy-1P-FZF" id="bAK-Nh-3x4"/>
+                        <outlet property="buttonCircleRight" destination="pHy-Md-HIT" id="aMu-ep-2di"/>
                         <outlet property="buttonSkip" destination="jD2-Gs-Lqk" id="Wl6-5x-VdJ"/>
                         <outlet property="labelAnswer1" destination="P4q-MX-CG1" id="sKH-i1-IVJ"/>
                         <outlet property="labelAnswer2" destination="BhN-q8-hxH" id="v4n-0k-GBy"/>
                         <outlet property="labelAnswer3" destination="Snq-os-fpl" id="1aT-Lx-Nuq"/>
                         <outlet property="labelAnswer4" destination="Qes-RK-ue4" id="1re-Xj-rZ0"/>
-                        <outlet property="labelEmpty" destination="u8a-fS-pj3" id="8jZ-Ey-wcE"/>
                         <outlet property="labelLoading" destination="vOB-Tb-N8P" id="iDY-6V-fzN"/>
                         <outlet property="layoutButtons" destination="Lhu-kf-pn9" id="8AU-QE-Has"/>
+                        <outlet property="layoutNoQuizzes" destination="4qB-Vf-eB4" id="RVh-9c-pqt"/>
                         <outlet property="quizQuestionLabel" destination="yOM-BB-ZDB" id="I3p-Kb-inL"/>
                     </connections>
                 </viewController>

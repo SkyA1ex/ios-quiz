@@ -14,10 +14,11 @@ import FirebaseDatabase
 
 class MainController: UIViewController {
 
-    @IBOutlet weak var buttonCircle: UIButton!
+    @IBOutlet weak var buttonCircleRight: UIButton!
+    @IBOutlet weak var buttonCircleLeft: UIButton!
     @IBOutlet weak var buttonSkip: UIButton!
     @IBOutlet weak var quizQuestionLabel: UILabel!
-    @IBOutlet weak var labelEmpty: UILabel!
+    @IBOutlet weak var layoutNoQuizzes: UIView!
 
     @IBOutlet weak var buttonAnswer1: UIButton!
     @IBOutlet weak var buttonAnswer2: UIButton!
@@ -51,10 +52,10 @@ class MainController: UIViewController {
     }
 
     private func start() {
-        showMainLoader(isShown: true)
+        showMainLoader(isShown: true, animate: true)
         // dataManager.getCachedQuizzesAsync(with: self.setQuizzes)
         dataManager.fetchAllQuizzes(with: self.setQuizzes, withError: { (error) in
-            self.showMainLoader(isShown: false)
+            self.showMainLoader(isShown: false, animate: true)
             self.showError(title: "Can't load quizzes", error: error?.localizedDescription)
         })
     }
@@ -63,7 +64,7 @@ class MainController: UIViewController {
     // UI methods
 
     private func setQuizzes(newQuizzes: [Quiz]) {
-        showMainLoader(isShown: false)
+        showMainLoader(isShown: false, animate: true)
         if (newQuizzes.count > 0) {
             quizzes = newQuizzes
             currentQuizIndex = 0
@@ -79,24 +80,35 @@ class MainController: UIViewController {
     }
 
     private func showNoQuizzes() {
-        animateViewHide(buttonSkip)
-        animateViewHide(quizQuestionLabel)
-        animateViewHide(layoutButtons)
-        animateViewShow(labelEmpty)
+        buttonSkip.isHidden = true
+        quizQuestionLabel.isHidden = true
+        layoutButtons.isHidden = true
+        animateViewShow(layoutNoQuizzes)
     }
 
-    private func showMainLoader(isShown: Bool) {
+    private func showMainLoader(isShown: Bool, animate: Bool) {
         if isShown {
             quizQuestionLabel.isHidden = true
             layoutButtons.isHidden = true
             buttonSkip.isHidden = true
-            animateViewShow(labelLoading)
+            if animate {
+                animateViewShow(labelLoading)
+            } else {
+                labelLoading.isHidden = false
+            }
         } else {
             // animate buttons layout
-            animateViewShow(layoutButtons)
-            animateViewShow(quizQuestionLabel)
-            animateViewShow(buttonSkip)
-            animateViewHide(labelLoading)
+            if animate {
+                animateViewShow(layoutButtons)
+                animateViewShow(quizQuestionLabel)
+                animateViewShow(buttonSkip)
+                animateViewHide(labelLoading)
+            } else {
+                layoutButtons.isHidden = false
+                quizQuestionLabel.isHidden = false
+                buttonSkip.isHidden = false
+                labelLoading.isHidden = true
+            }
         }
     }
 
@@ -258,9 +270,26 @@ class MainController: UIViewController {
 
     // button circle
 
-    @IBAction func onCircleUpInside(_ sender: UIButton) {
-        UIView.animate(withDuration: 2) {
-            sender.bounds.size.width *= 2
+    
+    @IBAction func circleRightDown(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            if self.buttonCircleRight.bounds.size.height < 1600 {
+                self.buttonCircleRight.bounds.size.height *= 2
+            }
+            if self.buttonCircleLeft.bounds.size.height > 50 {
+                self.buttonCircleLeft.bounds.size.height *= 0.5
+            }
+        }
+    }
+    
+    @IBAction func circleLeftDown(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            if self.buttonCircleLeft.bounds.size.height < 1600 {
+                self.buttonCircleLeft.bounds.size.height *= 2
+            }
+            if self.buttonCircleRight.bounds.size.height > 50 {
+                self.buttonCircleRight.bounds.size.height *= 0.5
+            }
         }
     }
 
