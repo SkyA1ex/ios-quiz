@@ -14,6 +14,11 @@ import FirebaseDatabase
 
 class MainController: UIViewController {
 
+    @IBOutlet weak var leftHorContraint: NSLayoutConstraint!
+    @IBOutlet weak var rightHorContraint: NSLayoutConstraint!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+
     @IBOutlet weak var buttonCircleHorRight: UIButton!
     @IBOutlet weak var buttonCircleHorLeft: UIButton!
     @IBOutlet weak var buttonCircleRight: UIButton!
@@ -272,32 +277,92 @@ class MainController: UIViewController {
 
     // button circle
 
-    
-    @IBAction func circleRightDown(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.1) {
-            if self.buttonCircleRight.bounds.size.height < 1600 {
-                self.buttonCircleRight.bounds.size.height *= 2
-                self.buttonCircleHorLeft.bounds.size.width *= 2
-            }
-            if self.buttonCircleLeft.bounds.size.height > 50 {
-                self.buttonCircleLeft.bounds.size.height *= 0.5
-                self.buttonCircleHorRight.bounds.size.width *= 0.5
-            }
+    var prevLocationRight: CGPoint?
+    var prevLocationLeft: CGPoint?
+    var prevLocationBottom: CGPoint?
+    var prevLocationTop: CGPoint?
+
+
+    @IBAction func onUIPanGestureAction(_ sender: UIPanGestureRecognizer) {
+        if sender.state == .began {
+            prevLocationRight = sender.location(in: self.view)
+            return
+        }
+        if sender.state == .changed {
+            let newLocation = sender.location(in: self.view)
+            let diffX = newLocation.x - prevLocationRight!.x
+            onValueChanged(-diffX)
+            prevLocationRight = newLocation
+            return
+        }
+        if sender.state == .ended {
+            prevLocationRight = nil
+            return
         }
     }
-    
-    @IBAction func circleLeftDown(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.1) {
-            if self.buttonCircleLeft.bounds.size.height < 1600 {
-                self.buttonCircleLeft.bounds.size.height *= 2
-                self.buttonCircleHorRight.bounds.size.width *= 2
-            }
-            if self.buttonCircleRight.bounds.size.height > 50 {
-                self.buttonCircleRight.bounds.size.height *= 0.5
-                self.buttonCircleHorLeft.bounds.size.width *= 0.5
-            }
+
+    @IBAction func onUIPanGestureActionLeft(_ sender: UIPanGestureRecognizer) {
+        if sender.state == .began {
+            prevLocationLeft = sender.location(in: self.view)
+            return
+        }
+        if sender.state == .changed {
+            let newLocation = sender.location(in: self.view)
+            let diffX = newLocation.x - prevLocationLeft!.x
+            onValueChanged(diffX)
+            prevLocationLeft = newLocation
+            return
+        }
+        if sender.state == .ended {
+            prevLocationLeft = nil
+            return
         }
     }
-    
-    
+
+    @IBAction func onUIPanGestureActionBottom(_ sender: UIPanGestureRecognizer) {
+        if sender.state == .began {
+            prevLocationBottom = sender.location(in: self.view)
+            return
+        }
+        if sender.state == .changed {
+            let newLocation = sender.location(in: self.view)
+            let diffY = newLocation.y - prevLocationBottom!.y
+            onValueChanged(-diffY)
+            prevLocationBottom = newLocation
+            return
+        }
+        if sender.state == .ended {
+            prevLocationBottom = nil
+            return
+        }
+    }
+
+
+    @IBAction func onUIPanGestureActionTop(_ sender: UIPanGestureRecognizer) {
+        if sender.state == .began {
+            prevLocationTop = sender.location(in: self.view)
+            return
+        }
+        if sender.state == .changed {
+            let newLocation = sender.location(in: self.view)
+            let diffY = newLocation.y - prevLocationTop!.y
+            onValueChanged(diffY)
+            prevLocationTop = newLocation
+            return
+        }
+        if sender.state == .ended {
+            prevLocationTop = nil
+            return
+        }
+    }
+
+
+
+    private func onValueChanged(_ value: CGFloat) {
+        rightHorContraint.constant.add(value)
+        leftHorContraint.constant.add(value)
+        topConstraint.constant.add(value)
+        bottomConstraint.constant.add(value)
+    }
+
 }
