@@ -135,19 +135,19 @@ class MainController: UIViewController {
 
     private func showNextQuiz() {
         guard let quizzes = quizzes,
-              let quizIndex = currentQuizIndex else {
+              var currentQuizIndex = currentQuizIndex else {
             print("showNextQuiz: error")
             return
         }
 
-        if quizIndex + 1 <= quizzes.count - 1 {
-            currentQuizIndex! += 1 // can I use quizIndex here?
-            let nextQuiz = quizzes[currentQuizIndex!]
+        if currentQuizIndex + 1 <= quizzes.count - 1 {
+            currentQuizIndex += 1 // can I use quizIndex here?
+            let nextQuiz = quizzes[currentQuizIndex]
             currentQuizId = nextQuiz.id
             showQuiz(nextQuiz)
         } else {
             showNoQuizzes()
-            currentQuizIndex = nil
+            self.currentQuizIndex = nil
             currentQuizId = nil
         }
     }
@@ -261,6 +261,7 @@ class MainController: UIViewController {
         if view.alpha == 1 {
             view.alpha = 0
         }
+        view.layer.removeAllAnimations()
         view.isHidden = false
         UIView.animate(withDuration: 1.5, delay: 0, options: [], animations: {
             view.alpha = 1

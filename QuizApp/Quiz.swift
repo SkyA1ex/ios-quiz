@@ -33,7 +33,7 @@ class Quiz: NSObject, NSCoding {
     }
 
     public static func parseDictionary(data: NSDictionary) -> Quiz? {
-        var quiz = Quiz()
+        let quiz = Quiz()
 
         guard let id = data["id"] as? Int,
               let question = data["question"] as? String,
