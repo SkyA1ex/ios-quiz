@@ -135,15 +135,15 @@
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiy-1P-FZF" userLabel="buttonCircleLeft">
-                                        <rect key="frame" x="50" y="572" width="50" height="50"/>
-                                        <color key="backgroundColor" red="0.0" green="0.74901960784313726" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="40" y="-90" width="40" height="40"/>
+                                        <color key="backgroundColor" red="0.19793414429530201" green="0.87080536912751683" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="E8M-qg-raa"/>
-                                            <constraint firstAttribute="width" constant="50" id="Wwv-kL-9TR"/>
+                                            <constraint firstAttribute="height" constant="40" id="E8M-qg-raa"/>
+                                            <constraint firstAttribute="width" constant="40" id="Wwv-kL-9TR"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="25"/>
+                                                <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
@@ -151,17 +151,50 @@
                                             <action selector="circleLeftDown:" destination="xXe-Bd-eQY" eventType="touchDown" id="GTA-ld-SVD"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHy-Md-HIT" userLabel="buttonCircleRight">
-                                        <rect key="frame" x="275" y="572" width="50" height="50"/>
-                                        <color key="backgroundColor" red="1" green="0.6062972923637584" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYU-xv-jCN" userLabel="buttonCircleHorLeft">
+                                        <rect key="frame" x="-20" y="300" width="40" height="40"/>
+                                        <color key="backgroundColor" red="0.5671665268456364" green="0.029912961409395974" blue="0.19685927013422819" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="8fg-BS-J4N"/>
-                                            <constraint firstAttribute="width" constant="50" id="U37-Pa-Q7Q"/>
-                                            <constraint firstAttribute="height" constant="50" id="bjm-Ez-aDJ"/>
+                                            <constraint firstAttribute="height" constant="40" id="Fgi-TR-PkW"/>
+                                            <constraint firstAttribute="width" constant="40" id="JIa-lv-U4y"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="25"/>
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="circleRightDown:" destination="xXe-Bd-eQY" eventType="touchDown" id="Szn-eA-QMT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UrM-kD-VUO" userLabel="buttonCircleHorRight">
+                                        <rect key="frame" x="355" y="130" width="40" height="40"/>
+                                        <color key="backgroundColor" red="0.85850985738255037" green="1" blue="0.48702244947248313" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="37Y-F6-KXx"/>
+                                            <constraint firstAttribute="height" constant="40" id="Bi8-BM-Mud"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="circleLeftDown:" destination="xXe-Bd-eQY" eventType="touchDown" id="DVi-FU-TX7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHy-Md-HIT" userLabel="buttonCircleRight">
+                                        <rect key="frame" x="295" y="577" width="40" height="40"/>
+                                        <color key="backgroundColor" red="1" green="0.6062972923637584" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="8fg-BS-J4N"/>
+                                            <constraint firstAttribute="height" constant="40" id="bjm-Ez-aDJ"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
@@ -169,25 +202,29 @@
                                             <action selector="circleRightDown:" destination="xXe-Bd-eQY" eventType="touchDown" id="Cuw-Cq-cyM"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no more quizzes today for you. Get some rest and come tomorrow." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="u8a-fS-pj3" userLabel="labelEmpty">
-                                        <rect key="frame" x="30" y="150" width="315" height="150"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no more quizzes today for you. Get some rest and come tomorrow." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="u8a-fS-pj3" userLabel="labelEmpty">
+                                        <rect key="frame" x="80" y="150" width="215" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="bjl-uL-jED"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="38"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UrM-kD-VUO" secondAttribute="trailing" constant="-20" id="0Sp-hF-7kB"/>
                                     <constraint firstItem="u8a-fS-pj3" firstAttribute="top" secondItem="4qB-Vf-eB4" secondAttribute="top" constant="150" id="3Mg-lJ-Yod"/>
                                     <constraint firstItem="u8a-fS-pj3" firstAttribute="centerX" secondItem="4qB-Vf-eB4" secondAttribute="centerX" id="4d2-1p-lij"/>
-                                    <constraint firstAttribute="trailing" secondItem="pHy-Md-HIT" secondAttribute="trailing" constant="50" id="9NZ-QT-OSX"/>
-                                    <constraint firstItem="u8a-fS-pj3" firstAttribute="leading" secondItem="4qB-Vf-eB4" secondAttribute="leading" constant="30" id="ByU-kV-obh"/>
-                                    <constraint firstAttribute="bottom" secondItem="pHy-Md-HIT" secondAttribute="bottom" constant="-25" id="SJt-Nb-Ioz"/>
-                                    <constraint firstAttribute="trailing" secondItem="u8a-fS-pj3" secondAttribute="trailing" constant="30" id="SaF-NP-8rC"/>
-                                    <constraint firstAttribute="bottom" secondItem="kiy-1P-FZF" secondAttribute="bottom" constant="-25" id="rbr-z2-OCD"/>
-                                    <constraint firstItem="kiy-1P-FZF" firstAttribute="leading" secondItem="4qB-Vf-eB4" secondAttribute="leading" constant="50" id="rsZ-xc-v2D"/>
+                                    <constraint firstAttribute="trailing" secondItem="pHy-Md-HIT" secondAttribute="trailing" constant="40" id="9NZ-QT-OSX"/>
+                                    <constraint firstAttribute="bottom" secondItem="pHy-Md-HIT" secondAttribute="bottom" constant="-20" id="AcE-AT-Tpe"/>
+                                    <constraint firstItem="u8a-fS-pj3" firstAttribute="leading" secondItem="4qB-Vf-eB4" secondAttribute="leading" constant="80" id="ByU-kV-obh"/>
+                                    <constraint firstItem="cYU-xv-jCN" firstAttribute="leading" secondItem="4qB-Vf-eB4" secondAttribute="leading" constant="-20" id="HOg-Xw-7GM"/>
+                                    <constraint firstAttribute="trailing" secondItem="u8a-fS-pj3" secondAttribute="trailing" constant="80" id="SaF-NP-8rC"/>
+                                    <constraint firstItem="UrM-kD-VUO" firstAttribute="top" secondItem="4qB-Vf-eB4" secondAttribute="top" constant="130" id="cSW-I5-Ha9"/>
+                                    <constraint firstItem="kiy-1P-FZF" firstAttribute="top" secondItem="4qB-Vf-eB4" secondAttribute="top" constant="-90" id="qzM-OH-leu"/>
+                                    <constraint firstItem="cYU-xv-jCN" firstAttribute="top" secondItem="4qB-Vf-eB4" secondAttribute="top" constant="300" id="r81-nj-5SO"/>
+                                    <constraint firstItem="kiy-1P-FZF" firstAttribute="leading" secondItem="4qB-Vf-eB4" secondAttribute="leading" constant="40" id="rsZ-xc-v2D"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lhu-kf-pn9" userLabel="layoutButtons">
@@ -378,6 +415,8 @@
                         <outlet property="buttonAnswer2" destination="I3n-z4-Udw" id="P8w-DX-NA8"/>
                         <outlet property="buttonAnswer3" destination="i89-zM-peL" id="NhJ-xM-oxO"/>
                         <outlet property="buttonAnswer4" destination="cCH-JU-g4r" id="J8t-zb-Hn7"/>
+                        <outlet property="buttonCircleHorLeft" destination="cYU-xv-jCN" id="Wbd-xE-FxZ"/>
+                        <outlet property="buttonCircleHorRight" destination="UrM-kD-VUO" id="s4R-Xv-q3N"/>
                         <outlet property="buttonCircleLeft" destination="kiy-1P-FZF" id="bAK-Nh-3x4"/>
                         <outlet property="buttonCircleRight" destination="pHy-Md-HIT" id="aMu-ep-2di"/>
                         <outlet property="buttonSkip" destination="jD2-Gs-Lqk" id="Wl6-5x-VdJ"/>

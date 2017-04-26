@@ -14,6 +14,8 @@ import FirebaseDatabase
 
 class MainController: UIViewController {
 
+    @IBOutlet weak var buttonCircleHorRight: UIButton!
+    @IBOutlet weak var buttonCircleHorLeft: UIButton!
     @IBOutlet weak var buttonCircleRight: UIButton!
     @IBOutlet weak var buttonCircleLeft: UIButton!
     @IBOutlet weak var buttonSkip: UIButton!
@@ -275,9 +277,11 @@ class MainController: UIViewController {
         UIView.animate(withDuration: 0.1) {
             if self.buttonCircleRight.bounds.size.height < 1600 {
                 self.buttonCircleRight.bounds.size.height *= 2
+                self.buttonCircleHorLeft.bounds.size.width *= 2
             }
             if self.buttonCircleLeft.bounds.size.height > 50 {
                 self.buttonCircleLeft.bounds.size.height *= 0.5
+                self.buttonCircleHorRight.bounds.size.width *= 0.5
             }
         }
     }
@@ -286,9 +290,11 @@ class MainController: UIViewController {
         UIView.animate(withDuration: 0.1) {
             if self.buttonCircleLeft.bounds.size.height < 1600 {
                 self.buttonCircleLeft.bounds.size.height *= 2
+                self.buttonCircleHorRight.bounds.size.width *= 2
             }
             if self.buttonCircleRight.bounds.size.height > 50 {
                 self.buttonCircleRight.bounds.size.height *= 0.5
+                self.buttonCircleHorLeft.bounds.size.width *= 0.5
             }
         }
     }
