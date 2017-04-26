@@ -43,7 +43,7 @@ class DataManager {
                     DataManager.parseQuizzesAsync(spanshot: snap, with: { (quizzes) in
                         // filter already passed quizzes
                         let ids = self.getAnsweredIds()
-                        var filteredQuizzes = quizzes.filter({quiz in ids.contains(quiz.id!)})
+                        let filteredQuizzes = quizzes.filter({quiz in !ids.contains(quiz.id!)})
                         // passing data to callback
                         with?(filteredQuizzes)
                         // saving to local database

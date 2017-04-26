@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 
-class LoginController: UIViewController {
+class LoginController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textFieldEmail: PaddingTextField!
     @IBOutlet weak var textFieldPassword: PaddingTextField!
@@ -107,5 +107,9 @@ class LoginController: UIViewController {
         self.present(mainController, animated: true, completion: nil)
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
 
 }

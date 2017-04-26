@@ -182,6 +182,11 @@
 			isa = PBXProject;
 			attributes = {
 				ORGANIZATIONNAME = "Alexander Tkachenko";
+				TargetAttributes = {
+					BD817CAF778B54FE564F4844 = {
+						DevelopmentTeam = LHX7HSJRE3;
+					};
+				};
 			};
 			buildConfigurationList = BD81745400AF0A186A593507 /* Build configuration list for PBXProject "QuizApp" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -395,6 +400,7 @@
 			baseConfigurationReference = F9A9C4AAC4D0D5A04E3E94BF /* Pods-QuizApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LHX7HSJRE3;
 				INFOPLIST_FILE = QuizApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackqack.QuizApp;
@@ -408,6 +414,7 @@
 			baseConfigurationReference = 5ECF7BA3964E72C65A317B70 /* Pods-QuizApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LHX7HSJRE3;
 				INFOPLIST_FILE = QuizApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackqack.QuizApp;

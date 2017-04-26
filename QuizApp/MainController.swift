@@ -134,15 +134,14 @@ class MainController: UIViewController {
     }
 
     private func showNextQuiz() {
-        guard let quizzes = quizzes,
-              var currentQuizIndex = currentQuizIndex else {
+        guard let quizzes = quizzes, currentQuizIndex != nil else {
             print("showNextQuiz: error")
             return
         }
 
-        if currentQuizIndex + 1 <= quizzes.count - 1 {
-            currentQuizIndex += 1 // can I use quizIndex here?
-            let nextQuiz = quizzes[currentQuizIndex]
+        if currentQuizIndex! + 1 <= quizzes.count - 1 {
+            currentQuizIndex! += 1 // can I use quizIndex here?
+            let nextQuiz = quizzes[currentQuizIndex!]
             currentQuizId = nextQuiz.id
             showQuiz(nextQuiz)
         } else {
@@ -299,5 +298,6 @@ class MainController: UIViewController {
             }
         }
     }
-
+    
+    
 }
